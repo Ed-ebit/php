@@ -88,5 +88,44 @@
         <?php endforeach; ?>
     </table>
     <!--zusatz: als indiziertes Array mit list( ausgeben)-->
+    <?php 
+    $veranstaltungen = array (
+        array(
+            'Disziplin'=>'Diskuswurf',
+            'Beginn'=>'9:30',
+            'Ort'=>'Nebenplatz',
+            'Bemerkung'=>'Jugendmeisterschaften'
+        ),
+        array(
+            'Disziplin'=>'5-km-Lauf',
+            'Beginn'=>'10:00',
+            'Ort'=>'Stadion-Laufbahn',
+            'Bemerkung'=>'Offener Lauf'
+        ),
+        array(
+            'Disziplin'=>'Halbmarathon',
+            'Beginn'=>'11:00',
+            'Ort'=>'Waldgebiet',
+            'Bemerkung'=>'Teilnahme ab 18 Jahren'
+        ),
+       array(
+            'Disziplin'=>  'Stabhochsprung',
+            'Beginn'=>'12:00',
+            'Ort'=>'Stadion-Stabhochsprunganlage',
+            'Bemerkung'=>'Nur Frauen'
+        )
+        );
+        ?>
+
+        <table border='1'>
+            <tr>
+                <?php foreach($veranstaltungen as $veranstaltung =>$details): 
+                    if ($veranstaltung == 0):?>
+                    <th><?php echo $veranstaltung ?></th>
+                    <?php else: foreach($details as $detail) ?>
+                        <td><?php echo $detail?></td>
+                    <?php endif; endforeach; ?>
+            </tr>
+        </table>
 </body>
 </html>
