@@ -23,9 +23,9 @@
 
 <!--Aufgabe S.44 1.
 a) 730 Euro!
-b) Text
+b) Text falsch - parse error wegen 2xmal """"
 c) Text7
-d) Text 730 Euro
+d) Text 730 Euro falsch -error weil . fehlt zwischen string und var
 e) 37 und zus. Warnmeldung
 f) 37 und Warnmeldug ($c auf 0 gesetzt)
 g) Fatal Error, division durch 0
@@ -52,7 +52,7 @@ $br_preis_lampe = (double)$preis_lampe*inklMWST.EURO;
 $br_preis_stuhl = (double)$preis_stuhl*inklMWST.EURO;
 $br_preis_pctisch = (double)$preis_pctisch*inklMWST.EURO;
 
-$netto_gesamt = (double)$preis_tisch+(double)$preis_stuhl+(double)$preis_lampe+(double)$preis_pctisch.EURO;
+$netto_gesamt = (double)$preis_tisch+(double)$preis_stuhl+(double)        $preis_lampe+(double)$preis_pctisch.EURO;
 $brutto_gesamt = (double)$netto_gesamt*inklMWST.EURO;
 
 echo    "<p>
@@ -110,7 +110,7 @@ for ($i = 11; $i>=0; $i--) {
 <h1>while_do while Schleife</h1>
 
 <?php 
-$zahl = 1;
+$zahl = 20;
 echo "<p>while Schleife mit Startwert: $zahl</p>\n";
 while ($zahl <=5) {
     echo "$zahl<br>\n";
@@ -118,7 +118,7 @@ while ($zahl <=5) {
 }
 echo '<hr>';
 
-$zahl = 1;
+$zahl = 20;
 echo "<p>do-while Schleife mit Startwert: $zahl</p>\n";
 do {
     echo "$zahl<br>\n";

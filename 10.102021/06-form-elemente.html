@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verschiedene Formular-Elemente</title>
+</head>
+<body>
+    <h1>Verschiedene Formular-Elemente</h1>
+    <p>Bitte füllen Sie die nachfolgenden Eingabefelder aus:</p>
+
+    <form action="06-form-elemente.php" method="post">
+
+        <p>E-Mail: <input type="text" name="email"><br>
+        Passwort: <input type="password" name="passwort"><br>
+        Datum: <input type="date" name="datum"></p>
+
+        <p>Farben:<br>
+            <input type="checkbox" name="gelb"> gelb
+            <input type="checkbox" name="blau"> blau
+            <input type="checkbox" name="gruen"> grün
+            <input type="checkbox" name="rot"> rot</p>
+
+        <p>Ampel:<br>
+            <input type="radio" name="ampel" value="rot"> rot
+            <input type="radio" name="ampel" value="gelb"> gelb
+            <input type="radio" name="ampel" value="grün"> grün</p>
+
+        <p>Speisen:<br>
+            <input type="checkbox" name="speisen[]" value="Pizza"> Pizza
+            <input type="checkbox" name="speisen[]" value="Nudeln"> Nudeln
+            <input type="checkbox" name="speisen[]" value="Salat"> Salat</p>
+
+        <p>
+            Eis: <select name="eissorte"><!-- ohne value wird der eintrag zw options genutzt. vgl. unten-->
+                <option></option>
+                <option>Schoko</option>
+                <option>Vanille</option>
+                <option>Nuss</option>
+            </select>
+        </p>
+
+        <p>
+            Gemüse: <select name="gemuese">
+                <option></option>
+                <option value="sorte-1">Bohnen</option>
+                <option value="sorte-2">Erbsen</option>
+                <option value="sorte-3">Blumenkohl</option>
+            </select>
+        </p>
+
+        <p>
+            Obst: <select name="obst[]" multiple>
+                <option>Apfel</option>
+                <option>Birne</option>
+                <option>Pflaume</option>
+                <option>Orange</option>
+            </select>
+        </p>
+
+        <p>Nachricht<br>
+            <textarea name="memo">Das ist der vorbelegte Text.
+
+                Der kann auch Umbrüche haben.
+            </textarea>
+        </p>
+
+        <p><input type="submit" value="Abschicken" name="senden"></p>
+
+    </form>
+</body>
+</html>
