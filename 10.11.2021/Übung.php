@@ -119,13 +119,29 @@
 
         <table border='1'>
             <tr>
-                <?php foreach($veranstaltungen as $veranstaltung =>$details): 
-                    if ($veranstaltung == 0):?>
-                    <th><?php echo $veranstaltung ?></th>
-                    <?php else: foreach($details as $detail) ?>
-                        <td><?php echo $detail?></td>
-                    <?php endif; endforeach; ?>
+                <?php foreach ($veranstaltungen[0] as $infos => $info):?>
+                    <th><?php echo $infos ?></th>
+                <?php endforeach; ?>
             </tr>
+              <!--  <?php //foreach ($veranstaltungen as $infos => $info):?>
+            <tr>
+                    <?php //list ($disz, $beg, $ort, $bem) = $info; ?>
+                    <td><?php //echo $disz; ?> </td>
+                    <td><?php// echo $beg; ?></td>
+                    <td><?php// echo $ort; ?></td>
+                    <td><?php// echo $bem; ?></td>
+            </tr>
+            <?php //endforeach; ?>-->
+                <?php for ($i=0;$i<=3;$i++):
+                        foreach($veranstaltungen[$i] as $infos => $info): ?>
+                <tr>
+                            <?php  list ($disz, $beg, $ort, $bem) = $info;?>
+                    <td><?php echo $disz; ?> </td>
+                    <td><?php echo $beg; ?></td>
+                    <td><?php echo $ort; ?></td>
+                    <td><?php echo $bem; ?></td>
+                </tr>
+                    <?php endforeach; endfor; ?>
         </table>
 </body>
 </html>
