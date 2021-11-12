@@ -132,16 +132,15 @@
                     <td><?php// echo $bem; ?></td>
             </tr>
             <?php //endforeach; ?>-->
-                <?php for ($i=0;$i<=3;$i++):
-                        foreach($veranstaltungen[$i] as $infos => $info): ?>
+                <?php foreach($veranstaltungen as $info): ?>
                 <tr>
-                            <?php  list ($disz, $beg, $ort, $bem) = $info;?>
+                            <?php  list ($disz, $beg, $ort, $bem) = $info;// funkt nur mit indizierten Arrays, nicht assoziativen!?>
                     <td><?php echo $disz; ?> </td>
                     <td><?php echo $beg; ?></td>
                     <td><?php echo $ort; ?></td>
                     <td><?php echo $bem; ?></td>
                 </tr>
-                    <?php endforeach; endfor; ?>
+                    <?php endforeach; ?>
         </table>
 </body>
 </html>
