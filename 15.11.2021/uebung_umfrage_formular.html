@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umfrage</title>
+</head>
+<body>
+    <h1>Umfrage mit Gewinnspiel</h1>
+
+    <p>Herzlichen Glückwunsch zur Teilnahme an der Weltbesten Umfrage!
+        Bitte senden Sie uns Ihre Daten:</p>
+
+    <form action="uebung_umfrage.php" method="post">
+
+        <p>
+            Vor- und Nachname: <input type="text" name="name"><br>
+            Straße: <input type="text" name="strasse"><br>
+            PLZ und Ort: <input type="text" name="ort">
+        </p>
+        <h4>Bitte wählen Sie die Antwort aus, die für Sie zutrifft:</h4>
+
+        <p>Wie gefällt Ihnen unser Internetangebot?<br>
+            <input type="radio" name="inet" id="sehr gut"><br>
+            <input type="radio" name="inet" id="gut"><br>
+            <input type="radio" name="inet" id="nicht so gut"><br>
+            <input type="radio" name="inet" id="gar nicht">
+        </p>
+        <p>Wie gefällt Ihnen unser Internetangebot?<br>
+            <input type="radio" name="infogehalt" id="0"><br>
+            <input type="radio" name="infogehalt" id="1"><br>
+            <input type="radio" name="infogehalt" id="2"><br>
+        </p>
+        <p>Wie gefällt Ihnen unser Internetangebot?<br>
+            <input type="radio" name="bestellsyst" id="sehr gut"><br>
+            <input type="radio" name="bestellsyst" id="gut"><br>
+            <input type="radio" name="bestellsyst" id="nicht so gut"><br>
+            <input type="radio" name="bestellsyst" id="gar nicht">
+        </p>
+
+        <p>zusätzliche Nachricht: <input type="text" name="nachricht"></p>
+
+        <input type="submit" value="senden">
+
+    </form>
+    
+</body>
+</html>
