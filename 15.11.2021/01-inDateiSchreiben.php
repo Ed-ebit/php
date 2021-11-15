@@ -17,6 +17,10 @@
             //Prüfung, ob Datei schon angelegt ist
             $tkopf = file_exists($datei);
 
+    //Öffnen, wenn nicht vorhanden wird angelegt im Modus 'a'
+    $fh = fopen($datei,'a');
+
+
             //Zusätlich prüfen: is das übahaupt ne Textdatei, falls sie schon existiert?
             // dazu: Mime-Type auslesen
             if(true===$fh){
@@ -29,8 +33,7 @@
                 }
             }
 
-    //Öffnen, wenn nicht vorhanden wird angelegt im Modus 'a'
-    $fh = fopen($datei,'a');
+
 
     if(false===$fh) {
         echo "<p>Die Datei <b>$datei</b> konnte nicht geöffnet werden.</p>";
