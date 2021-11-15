@@ -34,16 +34,47 @@
     echo array_ausgabe($a1,2,'#a1c');
 
 ?>
+<!-- Aufgabe 2, Fragen: set eines checks für Button, und wie geht die Zahl in den Inputtype?-->
 <?php  
-function kugel_preis ($dm,$mat){
-    
-    $endpreis = pow((1/2*(double)$dm),3)*(double)$mat*1.19;
-    return $endpreis;
+
+$chk_dm='';
+$chk_holz='';
+$chk_styropor='';
+$chk_glass='';
+$chk_metall='';
+
+if (isset($_POST['durchmesser'])) {
+    $chk_dm=$_POST['durchmesser'];
+}
+if (isset($_POST['material'])) {
+    switch($_POST['material']) {
+        case 'holz': $chk_holz = 'checked';
+        case 'styropor': $chk_styropor = 'checked';
+        case 'glass': $chk_glass = 'checked';
+        case 'metall': $chk_metall = 'checked';
+    }
 }
 
-//if(isset($_POST['senden'])){
-    $endpreis = kugel_preis($_POST['durchmesser'],$_POST['material']);
-//}
+
+function kugel_preis ($dm,$mat){
+
+    $gp = array (
+        'Holz' => 100,
+        'Styropor' => 20,
+        'Glas' => 250,
+        'Metall' => 175,
+    );
+
+    foreach($gp as $material=>$geld) {
+        if ($mat == $material) {
+        $endpreis = pow((1/2*(double)$dm),3)*(double)$geld*1.19;
+        return $endpreis;
+        }
+    }   
+}
+
+$endpreis = kugel_preis($_POST['durchmesser'],$_POST['material']);
+
 
 ?>
 <h1>Kugeln</h1>
@@ -54,15 +85,16 @@ function kugel_preis ($dm,$mat){
 
 <p>
 gewünschter Durchmesser in Metern: <br>
-<input type="number" name="durchmesser"><br>
+<input type="number" name="durchmesser"><?php echo $chk_dm; ?>
+</input><br>
 gewünschtes Material: <br>
-<input type="radio" name="material" value="Holz">
+<input type="radio" name="material" value="Holz" <?php echo $chk_holz; ?>>
 Holz
-<input type="radio" name="material" value="Styropor">
+<input type="radio" name="material" value="Styropor" <?php echo $chk_styropor; ?>>
 Styropor
-<input type="radio" name="material" value="Glas">
+<input type="radio" name="material" value="Glas" <?php echo $chk_glass; ?>>
 Glas
-<input type="radio" name="material" value="Metall">
+<input type="radio" name="material" value="Metall" <?php echo $chk_metall; ?>>
 Metall
 </p>
 
