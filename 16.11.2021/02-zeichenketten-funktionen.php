@@ -54,7 +54,7 @@ echo '</p>';
 
 echo '<p>';
 echo 'Suche nach i ergibt: <b>' . strrpos($e_mail, 'i').'</b>.</br>';
-echo '</p>';// reversed, also ab letztem 'i'
+echo '</p>';// reversed, also das letzte 'i'
 
 echo '<p>';
 echo 'Suche nach i ergibt: <b>' . stripos($e_mail, 'b').'</b>.</br>';
