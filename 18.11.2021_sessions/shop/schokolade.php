@@ -36,12 +36,19 @@ get_header( ...$args );
     <?php foreach($array_schoko as $art_nr => $bez): ?>
 
         <?php $menge = isset($_SESSION[$art_nr]) ? $_SESSION[$art_nr] :0; ?>
+        <?php 
+        /*Folgender Code funkt nur in Zusammenhang mit dem Bearbeiten-button aus dem Warenkorn*/
 
+        $focus='';
+        if(isset($_GET['edit']) && $art_nr === $_GET['edit']) {
+            $focus = 'autofocus';// autofocus:boolsches element, true oder false
+        }
+        ?>
         <tr>
             <td><?php echo $art_nr ?> </td>
             <td><?php echo $bez ?></td>
             <td>
-                <input type="number" name="<?php echo $art_nr; ?>" value="<?php echo $menge; ?>" size="5">
+                <input type="number" name="<?php echo $art_nr; ?>" value="<?php echo $menge; ?>" size="5"<?php echo $focus;?> >
             </td>
             <td>Tafel von 100g</td>
         </tr>

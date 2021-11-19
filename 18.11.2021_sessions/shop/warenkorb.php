@@ -37,6 +37,10 @@ if (isset($_POST['schokolade'])OR isset($_POST['pralinen'])) {
         }
    }
 }
+
+if(isset($_GET['delete'])){
+    unset($_SESSION[$_GET['delete']]);
+}
 //echo '<pre>', var_dump( $_SESSION ), '</pre>';
 ?>
 
@@ -45,6 +49,7 @@ if (isset($_POST['schokolade'])OR isset($_POST['pralinen'])) {
         <th>Art.-Nr.</th>
         <th>Bezeichnung</th>
         <th>Menge</th>
+        <th>Aktion</th>
     </tr>
 
     <?php foreach($_SESSION as $art_nr => $menge):  ?>
@@ -54,15 +59,21 @@ if (isset($_POST['schokolade'])OR isset($_POST['pralinen'])) {
             <td>
                 <?php 
                 if(str_starts_with($art_nr, 's')){
+                    $link='schokolade.php';
                     echo $array_schoko[$art_nr];
                 }
                 if(str_starts_with($art_nr, 'p')){
+                    $link='pralinen.php';
                     echo $array_pralinen[$art_nr];
                 }
 
                 ?>
             </td>
             <td><?php echo $menge; ?></td>
+            <td>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?delete=<?php echo $art_nr; ?>">del</a>
+                <a href="<?php echo $link; ?>?edit=<?php echo $art_nr; ?>">edit</a>
+            </td>
         </tr>
 
     <?php endforeach; ?>
@@ -70,10 +81,26 @@ if (isset($_POST['schokolade'])OR isset($_POST['pralinen'])) {
 
 <p>Was möchten Sie nun TUN??</p>
 
+<style>
+    .delete{
+        pointer-events: none; /*deaktiviert den Link*/
+        cursor: default; /*setzt den Cursor zurück*/
+        text-decoration:none;/*entfernt alle Formatierungen*/
+        color:#666;
+    }
+    
+</style>
+<?php // um den zur Kasse Button disablen zu können
+if(empty($_SESSION)) {
+    $delete='delete';
+}
+
+?>
+
 <ul>
     <a href="schokolade.php"><button class="btn btn-primary">Schokoladenauswahl</button></a>
     <a href="pralinen.php"><button class="btn btn-primary">Pralinenauswahl</button></a>
-    <a href="kasse.php"><button class="btn btn-primary">zur Kasse</button></a>
+    <a href="kasse.php" class="<?php echo $delete; ?>"><button class="btn btn-success">zur Kasse</button></a>
 </ul>
     
 <?php get_footer(); ?>

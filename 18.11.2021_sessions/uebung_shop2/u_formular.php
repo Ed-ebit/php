@@ -39,7 +39,7 @@ get_header( ...$args );
     </tr>
 </table>
 
-<input type="submit" value="abschicken" name="abschicken">
+<input type="submit" value="abschicken" name="abschicken" class="btn btn-success">
 
 </form>
     

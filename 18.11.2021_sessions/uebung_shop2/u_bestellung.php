@@ -14,22 +14,39 @@ get_header( ...$args );
 
 <p>
 <?php 
+echo '<pre>', var_dump( $_POST ), '</pre>';
+if (isset($_POST['abschicken'])){
+    
+    foreach($_POST as $art => $menge){
 
-// echo '<pre>', var_dump( $_POST ), '</pre>';
-foreach($_POST as $art => $menge){
-
-    if(!empty($menge)){
-        if($menge == 'abschicken'){
-            continue;
+        if(!empty($menge)){
+            if($menge == 'abschicken'){
+                continue;
+            }
+            $word=ucfirst($art);
+            $word.='honig';
+            echo "<p>$word: $menge mal à 500g</p>";
+            //speichern in der Session
+            $_SESSION[$word] = $_POST[$art];
         }
-        $word=ucfirst($art);
-        $word.='honig';
-        echo "<p>$word: $menge mal à 500g</p>";
-        
     }
+    
+    echo '<p>';
+    echo '<pre>', var_dump( $_SESSION ), '</pre>';
+    echo 'Die Session-ID lautet: '.session_id();
+    echo '</p>';
+    ?>
+    <a href="u_abschluss.php" class="<?php echo $delete; ?>"><input type="submit" value="weiter" name="weiter" class="btn btn-success"></a>
+    <a href="u_formular.php"><input type="submit" value="zurück" class="btn btn-warning"></a>
+    </p>
+<?php  
+}else{
+    echo '<p>';
+    echo 'Bitte eine Bestellung über das Bestellformular vornehmen!';
+    echo '</p>';
+    ?>
+    <a href="u_formular.php"><input type="submit" value="zum Formular" class="btn btn-warning"></a>
+    <?php 
 }
 ?>
-
-</p>
-
 <?php get_footer(); ?>
