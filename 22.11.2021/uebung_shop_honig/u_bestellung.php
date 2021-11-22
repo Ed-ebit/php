@@ -14,6 +14,7 @@ get_header( ...$args );
 
 <p>
 <?php 
+$checksum = 0;//für Prüfung der Mindestbestellmenge
 //echo '<pre>', var_dump( $_POST ), '</pre>';
 if (isset($_POST['abschicken'])){
     
@@ -32,9 +33,17 @@ if (isset($_POST['abschicken'])){
         echo "<p>$word: $menge mal à 500g</p>";
         //speichern in der Session
         $_SESSION[$word] = $_POST[$art];
-        
+        $checksum += $_POST[$art];
     }
-    
+
+    if($checksum < 1) {
+        echo '<p class="text-danger">';
+        echo '<b>Die Mindestbestellmenge von 1 Glas Honig wurde nicht erreicht!</b>';
+        echo '</p>';
+        ?>
+        <a href="u_formular.php"><input type="submit" value="zum Formular" class="btn btn-warning"></a>
+        <?php 
+    }else{    
     echo '<p>';
     //echo '<pre>', var_dump( $_SESSION ), '</pre>';
     echo 'Die Session-ID lautet: '.session_id();
@@ -44,6 +53,7 @@ if (isset($_POST['abschicken'])){
     <a href="u_formular.php"><input type="submit" value="zurück" class="btn btn-warning"></a>
     </p>
 <?php  
+    }
 }else{
     echo '<p>';
     echo 'Bitte eine Bestellung über das Bestellformular vornehmen!';
