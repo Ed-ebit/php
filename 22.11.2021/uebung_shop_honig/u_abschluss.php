@@ -17,7 +17,7 @@ if(isset($_POST['finale'])){
     $_SESSION['Wohnort']=$_POST['ort'];
     $_SESSION['E-Mail']=$_POST['email'];
     //echo '<pre>', var_dump( $_SESSION ), '</pre>';
-        if (!empty(trim($_POST['vname'])) and !empty(trim($_POST['vname'])) and !empty(trim($_POST['vname'])) and !empty(trim($_POST['vname']))){
+        if (!empty(trim($_POST['vname'])) and !empty(trim($_POST['nname'])) and !empty(trim($_POST['ort'])) and !empty(trim($_POST['email']))){
             //echo '<pre>', var_dump( $_SESSION ), '</pre>';
 
             echo '<h4>Ihre Bestellung in der Übersicht:</h4>';
