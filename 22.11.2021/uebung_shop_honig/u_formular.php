@@ -23,19 +23,19 @@ get_header( ...$args );
     </tr>
     <tr>
         <td>Akazienhonig</td>
-        <td><input type="number" name="akazien"></td>
+        <td><input type="number" min="0" name="akazien"></td>
     </tr>
     <tr>
         <td>Heidehonig</td>
-        <td><input type="number" name="heide"></td>
+        <td><input type="number" min="0" name="heide"></td>
     </tr>
     <tr>
         <td>Kleehonig</td>
-        <td><input type="number" name="klee"></td>
+        <td><input type="number" min="0" name="klee"></td>
     </tr>
     <tr>
         <td>Tannenhonig</td>
-        <td><input type="number" name="tannen"></td>
+        <td><input type="number" min="0" name="tannen"></td>
     </tr>
 </table>
 
