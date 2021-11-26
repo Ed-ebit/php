@@ -1,0 +1,48 @@
+body,
+td {
+    color: #636363;
+    background-color: #efefef;
+    font-size: 16px;
+}
+
+th {
+    font-weight: normal;
+    font-size: 1.2em;
+}
+a{
+    text-decoration: none;
+}
+a:link,
+a:visited {
+    color:#636363;
+}
+a:hover {
+    color: #d3d3d3;
+}
+.header {
+    color: #fff;
+    background-color: #ea6153;
+}
+
+.header.green {
+    background-color: #27ae60;
+}
+.info {
+    background-color: #e0a0db;
+}
+
+.form-control {
+    width: 150px;
+}
+
+.number {
+    text-align: right;
+}
+
+.small-fonts {
+    font-size: smaller;
+}
+
+td .bi {
+    font-size: x-large;
+}
