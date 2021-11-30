@@ -1,6 +1,14 @@
 <?php 
+
     //Funktionen, die man in jedem Skript gut gebrauchen kann
     
+    /* Die Navbar wechselt ihre Anzeige, je nachdem ob ein User angemeldet ist oder nicht. 
+    Hierzu 3 Variablen, die jeweils einen Menüpunkt darstellen und bei Bedarf leer und damit nicht vorhanden sind.*/
+    
+    $menuL = isset($_SESSION['login'])?'Logout':'';
+    $menuR = isset($_SESSION['login'])?'':'Einloggen';
+    $menuE = isset($_SESSION['login'])?'':'Registrieren';
+  
     /* Schreibt einen HTML-Header und den Kopf-Bereich der Seite
     Title (Head-Bereich) --einziger absoluter Pflichtparameter, rest darf optional sein
     CSS Datei(en)? Null||(string|array)
@@ -20,6 +28,8 @@
         bool $fluid = false
     ){
         $class_fluid = (false === $fluid) ? 'container': 'container-fluid';
+
+
 ?>
 <!--html-teil-->
 <!DOCTYPE html>
@@ -74,7 +84,7 @@ function get_nav(array $nav) {
     ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><?php echo $nav[0] ?></a>
+    <a class="navbar-brand" href="startseite.php"><?php echo $nav[0] ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
