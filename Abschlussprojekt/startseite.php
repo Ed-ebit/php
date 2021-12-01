@@ -12,10 +12,11 @@ $args = array(
         array(
         'Home',
             array(
-            'Neuer Eintrag' =>'erstellen.php',
+             $menuER =>'erstellen.php',
              $menuL=>'logout.php',
              $menuR=> 'regi.php',
-             $menuE=> 'login.php'
+             $menuE=> 'login.php',
+             $user=>''
             )
         ),
     true    

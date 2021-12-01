@@ -14,10 +14,11 @@ $args = array(
         array(
         'Home',
             array(
-            'Neuer Eintrag' =>'erstellen.php',
+             $menuER =>'erstellen.php',
              $menuL=>'logout.php',
              $menuR=> 'regi.php',
-             $menuE=> 'login.php'
+             $menuE=> 'login.php',
+             $user=>''
             )
         ),
     true    
@@ -85,13 +86,8 @@ if( !empty( $_POST ) ) {
 
         echo '<p class="alert alert-success">';
         echo ' Registrieung war erfolgreich!</p>';
-        //User einloggen und in Session Array speichern
 
-        $_SESSION['login'] = true;
-        $_SESSION['autor_vorname']=$autor_vorname;
-        $_SESSION['autor_nachname']=$autor_nachname;
-        $_SESSION['autor_email']=$autor_email;
-        $_SESSION['autor_hash']=$autor_passwort;
+        echo '<p><a href="login.php"><br>Jetzt Einloggen</a></p>';
 
         mysqli_stmt_close( $stmt );
     }

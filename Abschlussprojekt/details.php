@@ -12,10 +12,11 @@ $args = array(
         array(
         'Home',
             array(
-            'Neuer Eintrag' =>'erstellen.php',
+             $menuER =>'erstellen.php',
              $menuL=>'logout.php',
              $menuR=> 'regi.php',
-             $menuE=> 'login.php'
+             $menuE=> 'login.php',
+             $user=>''
             )
         ),
     true     
@@ -41,13 +42,19 @@ $sql = 'SELECT
     `posts_bild`,
     `autor_vorname`,
     `autor_nachname`,
-    `autor_email`
+    `autor_email`,
+    `kateg_id`, 
+    `kateg_name`
 FROM
     `tbl_posts`
 JOIN
     `tbl_autoren`
 ON
     `posts_autor_id_ref` = `autor_id`
+JOIN
+    `tbl_kategorien`
+ON
+    `posts_kateg_id_ref`=`kateg_id`
 WHERE
     `posts_id` LIKE '.$eintrag;
 
@@ -63,17 +70,40 @@ $erg=mysqli_fetch_assoc($result);
 // echo 'Name der Session: '.session_name().'</p>';
 // echo '<pre>', var_dump( $_SESSION ), '</pre>';
 // echo '<pre>', var_dump( $_POST ), '</pre>'; 
-// echo '<pre>', var_dump( $erg ), '</pre>';
+echo '<pre>', var_dump( $erg ), '</pre>';
+
+/*Session Array mit Abfragedaten zur weiteren Bearbeitung befüllen*/
+$_SESSION['posts_titel'] = $erg['posts_titel'];
+$_SESSION['posts_inhalt'] = $erg['posts_inhalt'];
+$_SESSION['posts_bild'] = $erg['posts_bild'];
+$_SESSION['posts_kateg_id_ref'] = $erg['posts_kateg_id_ref'];
+$_SESSION['posts_autor_id_ref'] = $erg['posts_autor_id_ref'];
+$_SESSION['posts_id'] = $erg['posts_id'];
+$_SESSION['kateg_name'] = $erg['kateg_name'];
+
+/* Variablen die Kontrollieren, dass der Bearbeiten-Button nur dem urspr. Autor zugänglich ist*/
+if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_autor_id_ref']){
+        $bearb ="<div><button><a href='bearbeiten.php'>Bearbeiten</a></button></div>";
+    } else {
+        $bearb ="<div><p><b>Hier kann der eingeloggte Autor seinen Artikel bearbeiten</b></div>";  
+    }
+    
 
 ?>
 
 <h1><?php echo $erg['posts_titel'] ?></h1>
 
 <div>
+    Kategorie: <?php echo $_SESSION['kateg_name'] ?>
+</div>
+
+<div>
     <?php echo $erg['posts_inhalt'] ?>
 </div>
 
 <img src="<?php echo $erg['posts_bild'] ?>" alt="Eintragsbild">
+
+<?php echo $bearb ?>
 
 <h4>Unser Autor:</h4>
 
