@@ -7,13 +7,13 @@ require_once( 'includes/functions.inc.php' );
 // get_header( string $title, string/array $css=NULL, bool $bootstrap=false, string $header=NULL, array $nav=NULL, bool $fluid=false )
 $args = array(
     'Logout',
-    'css/styles.css',
+    NULL,
     true,
     NULL,
         array(
         'Home',
             array(
-             $menuER=>'erstellen.php',
+             $menuER =>'erstellen.php',
              $menuL=>'logout.php',
              $menuR=> 'regi.php',
              $menuE=> 'login.php',
@@ -35,4 +35,4 @@ if ( session_destroy() ) {
 
 <p><a href="startseite.php">Zurück zur Startseite</a></p>
     
-<?php get_footer( false, true ); ?>
+<?php get_footer(); ?>

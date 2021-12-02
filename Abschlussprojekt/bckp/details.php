@@ -6,7 +6,7 @@ require_once( 'includes/db-connect.inc.php' );
 // get_header( string $title, string/array $css=NULL, bool$bootstrap=false, string $header=NULL, array $nav=NULL, bool $fluid=false )
 $args = array(
     'Miniblog!',
-    'css/styles.css',
+    null,
     true,
     null,
         array(
@@ -70,7 +70,7 @@ $erg=mysqli_fetch_assoc($result);
 // echo 'Name der Session: '.session_name().'</p>';
 // echo '<pre>', var_dump( $_SESSION ), '</pre>';
 // echo '<pre>', var_dump( $_POST ), '</pre>'; 
-// echo '<pre>', var_dump( $erg ), '</pre>';
+//echo '<pre>', var_dump( $erg ), '</pre>';
 
 /*Session Array mit Abfragedaten zur weiteren Bearbeitung befüllen*/
 $_SESSION['posts_titel'] = $erg['posts_titel'];
@@ -80,7 +80,6 @@ $_SESSION['posts_kateg_id_ref'] = $erg['posts_kateg_id_ref'];
 $_SESSION['posts_autor_id_ref'] = $erg['posts_autor_id_ref'];
 $_SESSION['posts_id'] = $erg['posts_id'];
 $_SESSION['kateg_name'] = $erg['kateg_name'];
-$_SESSION['kateg_id'] = $erg['kateg_id'];
 
 /* Variablen die Kontrollieren, dass der Bearbeiten-Button nur dem urspr. Autor zugänglich ist*/
 if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_autor_id_ref']){
@@ -118,7 +117,4 @@ if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_au
     echo '<br><h3>Kein Eintrag gewählt</h3><br>';
     echo '<p><b>Bitte wählen Sie einen Eintrag zum betrachten auf der Startseite.</b></p>';
 } ?>
-
-<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>
-
-<?php get_footer( false, true ); ?>
+<?php get_footer(); ?>

@@ -56,9 +56,7 @@ if (isset ($_SESSION['autor_id'])){
 
             $result = mysqli_query( $db, $sql);
 
-            echo '<p class="alert alert-success"> Beitrag erfolgreich erstellt!</p>';
-
-            echo '<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>';
+            echo '<p> Beitrag erfolgreich erstellt!</p>';
             
         } else {
 
@@ -90,7 +88,7 @@ if (isset ($_SESSION['autor_id'])){
     ?> 
     </select></p>
     <p>Inhalt: <textarea name="posts_inhalt" cols="30" rows="10"></textarea></p>
-    <p>Bild-URL: <input type="text" name="posts_bild"></p>
+    <p>Bild: <input type="text" name="posts_bild"></p>
 
     <tr>
         <td>
@@ -109,5 +107,5 @@ if (isset ($_SESSION['autor_id'])){
 } else {
     echo '<p>Bitte als Autor einloggen!</p>';
 }
-get_footer( false, true ); 
+get_footer(); 
 ?>

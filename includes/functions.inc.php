@@ -117,7 +117,7 @@ function get_nav(array $nav) {
         'container-fluid' benutzt werden soll
         default: false
 
-    @ param $bootstrap_js bool optional
+    @param $bootstrap_js bool optional
         Regelt ob Bootstrap-JS-Dateien eingebunden werden müssen.
 
     @return string Footer-Angaben für die HTML-Seite

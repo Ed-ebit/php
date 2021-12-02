@@ -3,7 +3,7 @@
     //Funktionen, die man in jedem Skript gut gebrauchen kann
     
     /* Die Navbar wechselt ihre Anzeige, je nachdem ob ein User angemeldet ist oder nicht. 
-    Hierzu 4 Variablen, die jeweils einen Menüpunkt darstellen und bei Bedarf leer und damit nicht vorhanden sind.*/
+    Hierzu 4 Variablen, die jeweils einen Menüpunkt anzeigen oder nicht (und damit nicht vorhanden sind).*/
     
     $menuL = isset($_SESSION['login'])?'Logout':'';
     $menuR = isset($_SESSION['login'])?'':'Registrieren';
@@ -11,9 +11,9 @@
     $menuER = isset($_SESSION['login'])?'Erstellen':'';
 
     //Eingeloggten User in Navbar anzeigen oder 'Gast'
-
-    $user = isset($_SESSION['login'])? 'Eingeloggt als: <b class="text-success">'.$_SESSION['autor_vorname'].' '. $_SESSION['autor_nachname'].'</b>':'<b>Gast</b>';
-
+    
+    $user = isset($_SESSION['login'])? 'Eingeloggt als: <b>'.$_SESSION['autor_vorname'].' '. $_SESSION['autor_nachname'].'</b>':'<b>Gast</b>';
+  
     /* Schreibt einen HTML-Header und den Kopf-Bereich der Seite
     Title (Head-Bereich) --einziger absoluter Pflichtparameter, rest darf optional sein
     CSS Datei(en)? Null||(string|array)
@@ -62,7 +62,7 @@
 
     <header>
         <div class="<?php echo $class_fluid; ?>">
-            <h1 class="display-3 text-center"><?php echo (is_null($header)) ?
+            <h1 class="display-3"><?php echo (is_null($header)) ?
         $title: $header; ?></h1>
         </div>
 
@@ -144,7 +144,7 @@ function get_nav(array $nav) {
 <!--html-Teil:-->
         </main>
         <footer>
-            <div class="<?php echo $class_fluid; ?> text-center">
+            <div class="<?php echo $class_fluid; ?>">
                 <p>&copy; <?php echo date('Y'); ?> Reynaldo, Sebbo & Karl! Kurs: PHP Abschlussprojekt</p>
             </div>
         </footer>

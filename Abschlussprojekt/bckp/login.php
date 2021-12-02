@@ -36,8 +36,11 @@ if( !empty( $_POST ) ) {
         mysqli_stmt_close( $stmt );
 
         if( password_verify( $autor_passwort, $db_pw ) ) {
-            $meldung = '<p class="alert alert-success text-center">Login erfolgreich!</p>';
+            $meldung = '<p class="alert alert-success">Login erfolgreich!</p>';
 
+            //Loginformular verstecken
+            $sichtbarkeit = 'hidden';
+            // echo '<pre>', var_dump( $_SESSION ), '</pre>';
             //User einloggen und in Session Array speichern
             
             $_SESSION['login'] = true;
@@ -46,9 +49,10 @@ if( !empty( $_POST ) ) {
             $_SESSION['autor_email']=$db_email;
             $_SESSION['autor_id'] = $db_id;
 
+            // echo '<pre>', var_dump( $_SESSION ), '</pre>';
+
         } else {
-            $meldung ='<p class="alert alert-danger text-center">Anmeldedaten stimmen nicht!!! Bitte probieren Sie es erneut.</p>';
-            $_POST = array();
+            $meldung ='<p class="alert alert-danger">Anmeldedaten stimmen nicht!!! Bitte probieren Sie es erneut.</p>';
         }
     }
 }
@@ -58,13 +62,13 @@ require_once( 'includes/functions.inc.php' );
 // get_header( string $title, string/array $css=NULL, bool $bootstrap=false, string $header=NULL, array $nav=NULL, bool $fluid=false )
 $args = array(
     'Login',
-    'css/styles.css',
+    NULL,
     true,
     NULL,
         array(
         'Home',
             array(
-             $menuER=>'erstellen.php',
+             $menuER =>'erstellen.php',
              $menuL=>'logout.php',
              $menuR=> 'regi.php',
              $menuE=> 'login.php',
@@ -74,37 +78,27 @@ $args = array(
     true    
 );
 get_header( ...$args );
-if (empty($_POST)){
+
 ?>
 
-<h2 class="text-center">Bitte tragen Sie ihre Login-Daten ein!!!</h2>
+<h2>Bitte tragen Sie ihre Login-Daten ein!!!</h2>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-    <div class="row">
+    <P>E-Mail-Adresse: <input type="email" name="autor_email"></P>
+    <p>Passwort: <input type="password" name="autor_passwort"></p>
 
-        <div class="text-center">
-            <p>E-Mail-Adresse: <input type="email" name="autor_email"></p>
-            
-            <p>Passwort: <input type="password" name="autor_passwort"></p>
-            
-
-            <tr>
-                <td>
-                    <input type="submit" value="Anmelden" name="anmelden">
-                    <input type="reset" value="Löschen">
-                </td>
-            </tr>   
-        </div>
-
-</div>
+    <tr>
+        <td>
+            <input type="submit" value="Anmelden" name="anmelden">
+            <input type="reset" value="Löschen">
+        </td>
+    </tr>
     
 </form>
 
-<?php }
+<?php echo $meldung; ?>
 
-echo '<br>' . $meldung; ?>
+<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>
 
-<p class="text-center"><a href="startseite.php">Zurück zur Startseite</a></p>
-
-<?php get_footer( false, true ); ?>
+<?php get_footer( false, true); ?>

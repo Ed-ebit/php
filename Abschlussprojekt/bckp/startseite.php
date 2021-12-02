@@ -37,8 +37,8 @@ $btnAlleB = '';
 
 //Prüfen, ob ein Autor in der Session ist, Beitreage-button
 if (isset ($_SESSION['autor_id'])) {
-    $btnMeineB = "<button type='submit' name='meineB' >Meine Beiträge</button>";
-    $btnAlleB = "<button type='submit' name='alleB' >Alle Beiträge</button>";
+    $btnMeineB = "<button type='button submit' class='btn btn-primary' name='meineB' >Meine Beiträge</button>";
+    $btnAlleB = "<button type='button submit' class='btn btn-primary' name='alleB' >Alle Beiträge</button>";
 }
 
 //Filter befüllen, Sichtbarkeit ändern:
@@ -136,18 +136,15 @@ while($erg=mysqli_fetch_assoc($result) ):
     if($filter == 0 || $filter == $erg['posts_kateg_id_ref']){
         $treffer++;
 ?>
-        <div class="card">
-            <img src="$erg['posts_bild']" alt="Artikelbild">
-            <div class="card-body">
+        <div>
             <form action="details.php" method="post">
-                <h4 class="card-title"><button type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
+                <h4><button class="btn border-primary" type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
             </form>
-            <p class="card-text"><?php echo substr($erg['posts_inhalt'],0,100).'...' ?> </p>
-            </div>
+            <p><?php echo substr($erg['posts_inhalt'],0,100).'...' ?> </p>
         </div> 
 
 <?php } endwhile; ?>
 
 <p class="<?php echo $sichtbarkeit?>">Anzahl gefundener Einträge: <b><?php echo $treffer ?></b> </p>
 
-<?php get_footer( false, true ); ?>
+<?php get_footer(false, true); ?>
