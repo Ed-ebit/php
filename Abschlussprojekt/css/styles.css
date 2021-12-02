@@ -15,3 +15,11 @@ button{
     padding: 3px;
 }
 
+img {
+    align-self: center;
+}
+
+.card{
+ width: 30%;
+}
+

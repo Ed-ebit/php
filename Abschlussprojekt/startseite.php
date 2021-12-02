@@ -136,8 +136,8 @@ while($erg=mysqli_fetch_assoc($result) ):
     if($filter == 0 || $filter == $erg['posts_kateg_id_ref']){
         $treffer++;
 ?>
-        <div class="card">
-            <img src="<?php echo $erg['posts_bild'] ?>" alt="Artikelbild">
+        <div class="card  col-sm col-md-6 col-lg-4">
+            <img src="<?php echo $erg['posts_bild'] ?>" alt="Artikelbild" width="160" height="145" class="align-self-center">
             <div class="card-body">
             <form action="details.php" method="post">
                 <h4 class="card-title"><button type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
