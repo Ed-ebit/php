@@ -137,7 +137,7 @@ while($erg=mysqli_fetch_assoc($result) ):
         $treffer++;
 ?>
         <div class="card">
-            <img src="$erg['posts_bild']" alt="Artikelbild">
+            <img src="<?php echo $erg['posts_bild'] ?>" alt="Artikelbild">
             <div class="card-body">
             <form action="details.php" method="post">
                 <h4 class="card-title"><button type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
