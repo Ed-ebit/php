@@ -36,7 +36,7 @@ if( !empty( $_POST ) ) {
         mysqli_stmt_close( $stmt );
 
         if( password_verify( $autor_passwort, $db_pw ) ) {
-            $meldung = '<p class="alert alert-success text-center">Login erfolgreich!</p>';
+            $meldung = '<p class="alert alert-success text-center"><i class="bi bi-check-square"></i> Login erfolgreich!</p>';
 
             //User einloggen und in Session Array speichern
             
@@ -65,7 +65,7 @@ $args = array(
     true,
     NULL,
         array(
-        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog">',
+        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog" height="80px" width="80px">Home</img>',
             array(
              $menuER=>'erstellen.php',
              $menuL=>'logout.php',
@@ -80,27 +80,28 @@ get_header( ...$args );
 if (empty($_POST)){
 ?>
 
-<h2 class="text-center">Bitte tragen Sie ihre Login-Daten ein!!!</h2>
+<h2 class="m-2">Bitte tragen Sie ihre Login-Daten ein!</h2>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-    <div class="row">
+    <div class="row justify-content-center">
 
-        <div class="text-center">
-            <p>E-Mail-Adresse: <input type="email" name="autor_email"></p>
-            
-            <p>Passwort: <input type="password" name="autor_passwort"></p>
-            
-
-            <tr>
-                <td>
-                    <input type="submit" value="Anmelden" name="anmelden">
-                    <input type="reset" value="Löschen">
-                </td>
-            </tr>   
+        <div class="col-3">
+            <label>E-Mail-Adresse: </label><input class="form-control" type="email" name="autor_email">
+        </div> 
+        <div class="col-3">
+            <label>Passwort: </label><input class="form-control" type="password" name="autor_passwort">
+        </div> 
+    </div>      
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <button class="btn docfarbe m-2" type="submit" name="Login">Einloggen</button>
         </div>
+        <div class="col-2">
+            <button class="btn docfarbe m-2" type="reset">Zurücksetzen</button>
+        </div>
+    </div>
 
-</div>
     
 </form>
 
@@ -108,6 +109,6 @@ if (empty($_POST)){
 
 echo '<br>' . $meldung; ?>
 
-<p class="text-center"><a href="startseite.php">Zurück zur Startseite</a></p>
+<p class="text-center mt-2"><a class="nutzerfarbe" href="startseite.php"><b>Zurück zur Startseite</b></a></p>
 
 <?php get_footer( false, true ); ?>

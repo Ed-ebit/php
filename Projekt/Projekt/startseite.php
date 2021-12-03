@@ -7,13 +7,13 @@ require_once( 'includes/db-connect.inc.php' );
 $args = array(
     'Miniblog!',
     array(
-        'css/styles.css',
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css'
+        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css',
+        'css/styles.css'
     ),
     true,
     null,
         array(
-        'Home',
+        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog" height="80px" width="80px">Home</img>',
             array(
              $menuER =>'erstellen.php',
              $menuL=>'logout.php',
@@ -40,8 +40,8 @@ $btnAlleB = '';
 
 //Prüfen, ob ein Autor in der Session ist, Beitreage-button
 if (isset ($_SESSION['autor_id'])) {
-    $btnMeineB = "<button type='submit' name='meineB' >Meine Beiträge</button>";
-    $btnAlleB = "<button type='submit' name='alleB' >Alle Beiträge</button>";
+    $btnMeineB = "<button class='btn docfarbe m-2' type='submit' name='meineB' >Meine Beiträge</button>";
+    $btnAlleB = "<button class='btn docfarbe m-2' type='submit' name='alleB' >Alle Beiträge</button>";
 }
 
 //Filter befüllen, Sichtbarkeit ändern:
@@ -96,31 +96,35 @@ if (!$result && !$resultkat){
 
 ?>
 
-<h1>Herzlich willkommen zum Super-Miniblog!</h1>
+<h1 class="mb-3">Herzlich willkommen zum Super-Miniblog!</h1>
 
 <!-- Buttons eigene Beiträge/Alle Beiträge, nur für Autoren sichtbar -->
-<div>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <div>
-            <?php echo $btnMeineB;
-                echo $btnAlleB; ?>
-        </div>
-<!-- Buttons Ende -->
-        <div>
-            <p>Bitte wählen Sie eine Kategorie zum Anzeigen</p>
-            <select name="Kategorie">
-                <option value="0">Alle</option>
-                <?php 
-                while($erg=mysqli_fetch_assoc($resultkat) ){
-                    if ($erg['kateg_id']==$_SESSION['Kategorie']){//gemerkte Kategorieauswahl ist 'selected'
-                        echo '<option value='.$erg['kateg_id'].' selected>'.$erg['kateg_name'].'</option>';
+
+        <div class="row justify-content-center">
+            <div class="col-3 my-3">
+                <?php echo $btnMeineB;
+                    echo $btnAlleB; ?>
+            </div>
+            <!-- Buttons Ende -->
+            <div class="col-3 my-3">
+                <p>Bitte wählen Sie eine Kategorie zum Anzeigen</p>
+                <select class="form-select mb-2" name="Kategorie">
+                    <option value="0">Alle</option>
+                    <?php
+                    while($erg=mysqli_fetch_assoc($resultkat) ){
+                        if ($erg['kateg_id']==$_SESSION['Kategorie']){//gemerkte Kategorieauswahl ist 'selected'
+                            echo '<option value='.$erg['kateg_id'].' selected>'.$erg['kateg_name'].'</option>';
+                        }
+                        echo '<option value='.$erg['kateg_id'].'>'.$erg['kateg_name'].'</option>';
                     }
-                    echo '<option value='.$erg['kateg_id'].'>'.$erg['kateg_name'].'</option>';
-                } 
-                ?>
-            </select>
-            <button type="submit">Filtern</button>
+                    ?>
+                </select>
+                <button class="btn docfarbe" type="submit">Filtern</button>
+            </div>
         </div>
+
     </form>
 </div>
 
@@ -135,10 +139,10 @@ while($erg=mysqli_fetch_assoc($result) ):
     
     <div class="card border-0 col-md-6 col-lg-4 my-3">
         <form action="details.php" method="post">
-            <h4 class="card-title"><button type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
+            <h4 class="card-title"><button class="btn nutzerfarbe schatten" type="submit" name="id" value="<?php echo $erg['posts_id'] ?>"><?php echo ($erg['posts_titel']) ?> </button></h4>
         </form>
         <div class="card-body d-flex border">
-            <img src="<?php echo $erg['posts_bild'] ?>" alt="Artikelbild" width="160" height="140">
+            <img class="" src="<?php echo $erg['posts_bild'] ?>" alt="Artikelbild" width="160" height="140">
             <p class="card-text "><?php echo substr($erg['posts_inhalt'],0,100).'...' ?> </p>
         </div>
     </div> 
@@ -149,6 +153,6 @@ while($erg=mysqli_fetch_assoc($result) ):
 
 
 
-<p class="<?php echo $sichtbarkeit?>">Anzahl gefundener Einträge: <b><?php echo $treffer ?></b> </p>
+<p class="<?php echo $sichtbarkeit?> text-center">Anzahl gefundener Einträge: <b><?php echo $treffer ?></b> </p>
 
 <?php get_footer( false, true ); ?>

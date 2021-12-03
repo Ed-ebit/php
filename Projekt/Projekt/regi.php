@@ -14,8 +14,8 @@ $args = array(
     ),
     true,
     NULL,
-        array(
-        'Home',
+    array(
+        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog" height="80px" width="80px">Home</img>',
             array(
              $menuER=>'erstellen.php',
              $menuL=>'logout.php',
@@ -54,8 +54,8 @@ if( !empty( $_POST ) ) {
 
         if( false === mysqli_stmt_execute( $stmt )   ) {
             if( str_contains( get_db_error( $db, $sql ), 'Duplicate entry' ) ) {
-                echo '<p class="alert alert-danger">';
-                echo 'Diese E-Mail-Adresse ist schon registriert!!!</p>';
+                echo '<p class="alert alert-danger text-center">Diese E-Mail-Adresse ist schon registriert!!!</p>';
+                echo '<p class="text-center mt-2"><a class="nutzerfarbe" href="regi.php"><b>Neuer Versuch</b></a></p>';
             } else {
                 get_db_error( $db, $sql );
             }
@@ -65,15 +65,14 @@ if( !empty( $_POST ) ) {
 
             $id = mysqli_stmt_insert_id( $stmt );
 
-            echo '<p class="alert alert-success">';
-            echo ' Registrieung war erfolgreich!</p>';
+            echo '<p class="alert alert-success text-center"><i class="bi bi-check-square"></i> Registrierung war erfolgreich!</p>';
 
-            echo '<p><a href="login.php"><br>Jetzt Einloggen</a></p>';
+            echo '<p class="text-center mt-2"><a class="nutzerfarbe" href="login.php"><b>Jetzt Einloggen</b></a></p>';
 
             mysqli_stmt_close( $stmt );
         }
     } else {
-        echo 'Bitte min. Nachnamen, E-Mail und Passwort angeben';
+        echo '<p class="alert alert-danger text-center">Bitte min. Nachnamen, E-Mail und Passwort angeben</p>';
         $_POST = array();
     }
 } 
@@ -81,24 +80,38 @@ if( !empty( $_POST ) ) {
 if (empty ($_POST)){
 ?>
 
-<h2>Bitte tragen Sie ihre persönlichen Daten ein!!!</h2>
+<h2 class="m-2">Bitte tragen Sie ihre persönlichen Daten ein!</h2>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-    <P>Vorname: <input type="name" name="autor_vorname"></P>
-    <P>Nachname: <input type="name" name="autor_nachname"></P>
-    <P>E-Mail-Adresse: <input type="email" name="autor_email"></P>
-    <p>Passwort: <input type="password" name="autor_passwort"></p>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <label>Vorname:</label> <input class="form-control" type="name" name="autor_vorname">
+        </div>
+        <div class="col-3">
+            <label>Nachname:</label> <input class="form-control" type="name" name="autor_nachname">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <label>E-Mail-Adresse: </label><input class="form-control" type="email" name="autor_email">
+        </div>
+        <div class="col-3">
+            <label>Passwort: </label><input class="form-control" type="password" name="autor_passwort">
+        </div>
+    </div>
 
-    <tr>
-        <td>
-            <input type="submit" value="Registrieren" name="registrieren">
-            <input type="reset" value="Löschen">
-        </td>
-    </tr>
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <button class="btn docfarbe m-2" type="submit" value="Registrieren" name="registrieren">Registrierung</button>
+        </div>
+        <div class="col-2">
+            <button class="btn docfarbe m-2" type="reset" value="Zurücksetzen">Zurücksetzen</button>
+        </div>
+    </div>
 
 </form>
 
-<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>
+<p class="text-center mt-2"><a class="nutzerfarbe" href="startseite.php"><b>Zurück zur Startseite</b></a></p>
 
 <?php } get_footer( false, true ); ?>

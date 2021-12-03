@@ -14,7 +14,7 @@ $args = array(
     true,
     NULL,
         array(
-        'Home',
+        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog" height="80px" width="80px">Home</img>',
             array(
              $menuER=>'erstellen.php',
              $menuL=>'logout.php',
@@ -29,13 +29,13 @@ get_header( ...$args );
 // echo '<pre>', var_dump( $_SESSION ), '</pre>';
 
 if ( session_destroy() ) {
-    echo '<span class="text-success">Logout erfolgreich</span>';
+    echo '<p class="alert alert-success text-center"> <i class="bi bi-check-square"></i> Logout erfolgreich!</p>';
 }  else {
-    echo '<span class="text-danger">Logout fehlgeschlagen!!! Probieren Sie es erneut.';
+    echo '<p class="alert-danger text-center">Logout fehlgeschlagen!!! Probieren Sie es erneut.</p>';
 }
 
 ?>
 
-<p><a href="startseite.php">Zurück zur Startseite</a></p>
+<p class="text-center mt-2"><a class="nutzerfarbe" href="startseite.php"><b>Zurück zur Startseite</b></a></p>
     
 <?php get_footer( false, true ); ?>

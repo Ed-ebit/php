@@ -13,7 +13,7 @@ $args = array(
     true,
     null,
         array(
-        'Home',
+        '<img src="https://icon-library.com/images/icon-for-blog/icon-for-blog-28.jpg" alt="miniblog" height="80px" width="80px">Home</img>',
             array(
              $menuER =>'erstellen.php',
              $menuL=>'logout.php',
@@ -87,7 +87,7 @@ $_SESSION['kateg_id'] = $erg['kateg_id'];
 
 /* Variablen die Kontrollieren, dass der Bearbeiten-Button nur dem urspr. Autor zugänglich ist*/
 if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_autor_id_ref']){
-        $bearb ="<div><button class='bi bi-pencil'><a href='bearbeiten.php'>Bearbeiten</a></button></div>";
+        $bearb ="<div><button class='btn docfarbe'><a href='bearbeiten.php'>Bearbeiten</a></button></div>";
     } else {
         $bearb ="<div><p><b>Hier kann der eingeloggte Autor seinen Artikel bearbeiten</b></div>";  
     }
@@ -95,22 +95,26 @@ if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_au
 
 ?>
 
-<h1><?php echo $erg['posts_titel'] ?></h1>
+<h1 class="mb-3"><?php echo $erg['posts_titel'] ?></h1>
 
-<div>
-    Kategorie: <?php echo $_SESSION['kateg_name'] ?>
+<div class="nutzerfarbe">
+    <h5>Kategorie: <?php echo $_SESSION['kateg_name'] ?> </h5>
 </div>
 
-<div>
+<div class="m-3">
     <img class="hauptbild" src="<?php echo $erg['posts_bild'] ?>" alt="Eintragsbild"></img>
-    <p><?php echo $erg['posts_inhalt'] ?></p>
+</div>
+<div class="row justify-content-center">
+    <div class="col-6"> 
+        <p ><?php echo $erg['posts_inhalt'] ?></p>
+    </div>
 </div>
 
 
 
 <?php echo $bearb ?>
 
-<h4>Unser Autor:</h4>
+<h5>Unser Autor:</h5>
 
 <div>
     <?php echo $erg['autor_vorname'] ?>
@@ -123,6 +127,6 @@ if (isset($_SESSION['autor_id']) && $_SESSION['autor_id'] == $_SESSION['posts_au
     echo '<p><b>Bitte wählen Sie einen Eintrag zum betrachten auf der Startseite.</b></p>';
 } ?>
 
-<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>
+<p class="text-center mt-2"><a class="nutzerfarbe" href="startseite.php"><b>Zurück zur Startseite</b></a></p>
 
 <?php get_footer( false, true ); ?>

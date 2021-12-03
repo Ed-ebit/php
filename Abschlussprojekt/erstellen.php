@@ -8,7 +8,10 @@ require_once( 'includes/db-connect.inc.php' );
 // get_header( string $title, string/array $css=NULL, bool $bootstrap=false, string $header=NULL, array $nav=NULL, bool $fluid=false )
 $args = array(
     'Erstellen von Beiträgen',
-    NULL,
+    array(
+        'css/styles.css',
+        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css'
+    ),
     true,
     NULL,
         array(
@@ -56,7 +59,7 @@ if (isset ($_SESSION['autor_id'])){
 
             $result = mysqli_query( $db, $sql);
 
-            echo '<p class="alert alert-success"> Beitrag erfolgreich erstellt!</p>';
+            echo '<p class="alert alert-success"><i class="bi bi-check-square"></i> Beitrag erfolgreich erstellt!</p>';
 
             echo '<p><a href="startseite.php"><br>Zurück zur Startseite</a></p>';
             

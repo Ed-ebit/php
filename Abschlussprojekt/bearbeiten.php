@@ -8,7 +8,10 @@ require_once( 'includes/db-connect.inc.php' );
 // get_header( string $title, string/array $css=NULL, bool $bootstrap=false, string $header=NULL, array $nav=NULL, bool $fluid=false )
 $args = array(
     'Bearbeiten von Beiträgen',
-    'css/styles.css',
+    array(
+        'css/styles.css',
+        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css'
+    ),
     true,
     NULL,
         array(

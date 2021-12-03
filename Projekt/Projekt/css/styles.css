@@ -1,0 +1,47 @@
+/*Allgemein*/
+
+
+h1,
+h2,
+h3,
+h5,
+div {
+    text-align: center;
+}
+
+div{
+    padding: 5px;
+}
+
+button{
+    padding: 3px;
+}
+
+img {
+    align-self: center;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+/*Klassen */
+.hauptbild{
+    width: 30rem;
+    height: 15rem;
+}
+
+
+.docfarbe{
+    background-color: #80CFE7;
+   }
+
+.nutzerfarbe {
+    color: #EF8020;
+}
+
+.schatten{
+    box-shadow: 5px 5px 10px #80CFE7;
+}
