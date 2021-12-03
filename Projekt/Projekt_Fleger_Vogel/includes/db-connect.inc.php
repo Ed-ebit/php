@@ -1,8 +1,8 @@
 <?php
 
 define( 'DB_HOST', 'localhost' );
-define( 'DB_USER', 'I24iD' );
-define( 'DB_PW', '7243I24iDphp' );
+define( 'DB_USER', 'php-user' );
+define( 'DB_PW', 'Pa$$w0rd' );
 define( 'DB_DATABASE', $database );
 
 $db = mysqli_connect( DB_HOST, DB_USER, DB_PW )
